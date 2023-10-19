@@ -125,4 +125,10 @@ public class Employee {
     public String getFullName(){
         return firstName + " " + lastName;
     }
+    public boolean contains(String searchTerm)
+    {
+        searchTerm = searchTerm.toLowerCase();
+        return (Integer.toString(id).contains(searchTerm) || this.getFullName().toLowerCase().contains(searchTerm) ||
+                department.toLowerCase().contains(searchTerm) || email.toLowerCase().contains(searchTerm) || Double.toString(salary).contains(searchTerm));
+    }
 }

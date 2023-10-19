@@ -58,6 +58,11 @@ public class EmployeeListViewController implements Initializable {
         employees = DBUtility.getEmployees();
 
         tableView.getItems().addAll((employees));
+
+        filterTextField.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            filteredTasks(newValue);
+        });
+
         updateLabels();
     }
 
@@ -65,6 +70,13 @@ public class EmployeeListViewController implements Initializable {
         numberEmployeesLabel.setText("Number of Employees: " + tableView.getItems().size());
         OptionalDouble averageSalary = tableView.getItems().stream().mapToDouble(Employee::getSalary).average();
         averageSalaryLabel.setText("Average Salary: " + String.format("%.2f",averageSalary.isPresent()?averageSalary.getAsDouble():0));
+    }
+
+    private void filteredTasks(String searchTerm){
+        tableView.getItems().clear();
+        tableView.getItems().addAll(employees.stream().filter(employee -> employee.contains(searchTerm)).toList());
+
+        updateLabels();
     }
 }
 
