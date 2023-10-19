@@ -5,4 +5,8 @@
 }
 #header {
     -fx-font-size: 30px;
+    -fx-text-fill: white;
+}
+#label{
+    -fx-text-fill: white;
 }

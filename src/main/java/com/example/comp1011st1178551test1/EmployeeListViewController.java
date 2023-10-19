@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.OptionalDouble;
 import java.util.ResourceBundle;
 
 public class EmployeeListViewController implements Initializable {
@@ -43,6 +45,7 @@ public class EmployeeListViewController implements Initializable {
     @FXML
     private TableView<Employee> tableView;
 
+    ArrayList<Employee> employees;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,7 +54,17 @@ public class EmployeeListViewController implements Initializable {
         departmentColumn.setCellValueFactory(new PropertyValueFactory<>("Department"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("Email"));
         salaryColumn.setCellValueFactory(new PropertyValueFactory<>("Salary"));
-        tableView.getItems().addAll((DBUtility.getEmployees()));
+
+        employees = DBUtility.getEmployees();
+
+        tableView.getItems().addAll((employees));
+        updateLabels();
+    }
+
+    private void updateLabels(){
+        numberEmployeesLabel.setText("Number of Employees: " + tableView.getItems().size());
+        OptionalDouble averageSalary = tableView.getItems().stream().mapToDouble(Employee::getSalary).average();
+        averageSalaryLabel.setText("Average Salary: " + String.format("%.2f",averageSalary.isPresent()?averageSalary.getAsDouble():0));
     }
 }
 

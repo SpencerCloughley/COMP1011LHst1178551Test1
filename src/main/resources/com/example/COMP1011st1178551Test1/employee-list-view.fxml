@@ -33,12 +33,12 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <Label fx:id="numberEmployeesLabel" prefHeight="30.0" prefWidth="150.0" text="Label">
+                  <Label id="label" fx:id="numberEmployeesLabel" prefHeight="30.0" prefWidth="150.0" text="Label">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="averageSalaryLabel" prefHeight="30.0" prefWidth="150.0" text="Label">
+                  <Label id="label" fx:id="averageSalaryLabel" prefHeight="30.0" prefWidth="150.0" text="Label">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
