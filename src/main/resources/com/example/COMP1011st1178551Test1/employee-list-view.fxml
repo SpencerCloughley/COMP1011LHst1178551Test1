@@ -53,10 +53,10 @@
             </HBox>
             <BarChart fx:id="barChart" prefHeight="103.0" prefWidth="600.0">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis id="label" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis id="label" side="LEFT" />
               </yAxis>
             </BarChart>
          </children>

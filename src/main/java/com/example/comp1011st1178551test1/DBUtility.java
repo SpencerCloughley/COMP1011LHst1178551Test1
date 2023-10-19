@@ -45,4 +45,37 @@ public class DBUtility {
         return employees;
     }
 
+    public static int[] countDepartments(){
+        int sales=0;
+        int marketing=0;
+        int finance=0;
+        int hr=0;
+        int it=0;
+        int research=0;
+
+        String sql = "SELECT department FROM employees";
+        String responseMsg;
+        try(
+                Connection conn = DriverManager.getConnection(connectUrl, user,password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+        ) {
+            while (resultSet.next()){
+                if(resultSet.getString("department").equals("Sales")) sales+=1;
+                else if(resultSet.getString("department").equals("Marketing"))marketing+=1;
+                else if(resultSet.getString("department").equals("Finance"))finance+=1;
+                else if(resultSet.getString("department").equals("HR"))hr+=1;
+                else if (resultSet.getString("department").equals("IT"))it+=1;
+                else if(resultSet.getString("department").equals("Research"))research+=1;
+
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return new int[]{sales,marketing,finance,hr,it,research};
+    }
+
 }

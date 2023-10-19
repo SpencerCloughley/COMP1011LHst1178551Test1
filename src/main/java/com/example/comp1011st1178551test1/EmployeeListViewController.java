@@ -3,6 +3,7 @@ package com.example.comp1011st1178551test1;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,7 +21,7 @@ public class EmployeeListViewController implements Initializable {
     private Label averageSalaryLabel;
 
     @FXML
-    private BarChart<?, ?> barChart;
+    private BarChart<String, Integer> barChart;
 
     @FXML
     private TableColumn<Employee, String> departmentColumn;
@@ -56,6 +57,17 @@ public class EmployeeListViewController implements Initializable {
         salaryColumn.setCellValueFactory(new PropertyValueFactory<>("Salary"));
 
         employees = DBUtility.getEmployees();
+        int[] departmentCount= DBUtility.countDepartments();
+
+        XYChart.Series<String,Integer> departmentData = new XYChart.Series<>();
+        departmentData.getData().add(new XYChart.Data<>("Sales",departmentCount[0]));
+        departmentData.getData().add(new XYChart.Data<>("Marketing",departmentCount[1]));
+        departmentData.getData().add(new XYChart.Data<>("Finance",departmentCount[2]));
+        departmentData.getData().add(new XYChart.Data<>("HR",departmentCount[3]));
+        departmentData.getData().add(new XYChart.Data<>("IT",departmentCount[4]));
+        departmentData.getData().add(new XYChart.Data<>("Research",departmentCount[5]));
+
+        barChart.getData().addAll(departmentData);
 
         tableView.getItems().addAll((employees));
 
