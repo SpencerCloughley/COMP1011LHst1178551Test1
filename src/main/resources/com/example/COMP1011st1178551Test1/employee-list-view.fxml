@@ -17,7 +17,7 @@
       <VBox alignment="TOP_CENTER" layoutX="225.0" layoutY="29.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label id="header" alignment="CENTER" prefHeight="45.0" prefWidth="306.0" text="List Of Employees" />
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="nameColumn" prefWidth="113.0" text="Name" />

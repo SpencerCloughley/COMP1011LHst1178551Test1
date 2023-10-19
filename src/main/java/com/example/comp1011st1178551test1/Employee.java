@@ -53,7 +53,7 @@ public class Employee {
 
     public void setLastName(String lastName) {
         lastName = lastName.replace(" ","");
-        if(lastName.length()>2) {
+        if(lastName.length()>1) {
             lastName = formatName(lastName);
             this.lastName = lastName;
         }
@@ -120,5 +120,9 @@ public class Employee {
         name = name.substring(0,1).toUpperCase() + name.substring(1);
         name = name.trim();
         return name;
+    }
+    
+    public String getFullName(){
+        return firstName + " " + lastName;
     }
 }

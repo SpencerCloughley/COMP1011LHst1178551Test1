@@ -14,7 +14,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employee-list-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.getIcons().add(new Image(Main.class.getResourceAsStream("imgs/CodeLogo.png")));
-        stage.setTitle("Test 1!");
+        stage.setTitle("Code Crafters");
         stage.setScene(scene);
         stage.show();
     }
