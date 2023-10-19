@@ -1,0 +1,8 @@
+.root{
+    -fx-background-image: url("imgs/computer.png");
+    -fx-background-size: cover;
+    -fx-font-fill: white;
+}
+#header {
+    -fx-font-size: 30px;
+}
